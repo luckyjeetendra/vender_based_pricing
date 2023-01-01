@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <record id="purchase_order_form_with_vendor_price" model="ir.ui.view">
+        <field name="name">purchase.order.form.view.with.vendor.price</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//page[@name='products']/group" position="before">
+                    <div class="oe_right">
+                        <button name="set_order_line" type="object" string="Fetch Order Line" data-hotkey="d"/>
+                    </div>
+                </xpath>
+                
+            </data>
+        </field>
+    </record>
+  </data>
+</odoo>

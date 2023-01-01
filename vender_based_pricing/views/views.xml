@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+
+    <!-- Display Vendor Product Price in vendor form view -->
+    <record id="vendor_price_view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.price.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                
+                <field name="supplier_rank" invisible="1"/>
+                <page string="Vendor Product Price" name="vendor_price_lines" attrs="{'invisible':[('supplier_rank','=',0)]}">
+                    <field
+                        name="vendor_price_line"
+                        mode="tree"
+                        >
+                        <tree
+                            string="Vendor Product Price"
+                            editable="bottom"
+                        >
+                            <field
+                                name="product_id"
+                                force_save="1"
+                                widget="product_configurator"
+                            />
+                            <field name="product_qty"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>
